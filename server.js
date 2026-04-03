@@ -5,6 +5,7 @@ import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import eventRoutes from './routes/eventRoutes.js';
 
 dotenv.config();
 
@@ -14,6 +15,9 @@ const __dirname = path.dirname(__filename);
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Mount event routes
+app.use('/api', eventRoutes);
 
 // Basic static serving if needed
 // app.use(express.static(path.join(__dirname, 'dist')));
@@ -38,12 +42,12 @@ transporter.verify(function (error, success) {
 
 // Mock database of registered authorities
 const registeredAuthorities = [
-  'vedavignanreddykomma@gmail.com',
+  'vignanreddy@gmail.com',
   process.env.EMAIL_USER // Include the sender as requested
 ];
 
 app.post('/api/alert', async (req, res) => {
-  const { timestamp, type } = req.body;
+  const { timestamp, type, location, nearestHospital, distance } = req.body;
 
   console.log(`[ALERT] Received critical alert at ${timestamp}`);
   console.log(`[DEBUG] Attempting to send email from: ${process.env.EMAIL_USER} to: ${registeredAuthorities.join(', ')}`);
@@ -61,7 +65,9 @@ app.post('/api/alert', async (req, res) => {
           <ul style="list-style: none; padding: 0; margin: 0;">
             <li style="margin-bottom: 8px;"><strong>📅 Time:</strong> ${timestamp}</li>
             <li style="margin-bottom: 8px;"><strong>🔍 Detection Type:</strong> ${type || 'AI Visual Matching'}</li>
-            <li style="margin-bottom: 8px;"><strong>📍 Source:</strong> HOPE Camera 01</li>
+            <li style="margin-bottom: 8px;"><strong>📍 Location Context:</strong> ${location || 'SV University, Tirupati, Pin Code: 517 501'}</li>
+            <li style="margin-bottom: 8px;"><strong>🏥 Nearest Hospital Unit:</strong> ${nearestHospital || 'SVIMS'} &mdash; <strong>Distance:</strong> ${distance || '1.2km'}</li>
+            <li style="margin-bottom: 8px;"><strong>📸 Live Camera Snapshot:</strong> Included inline in stream buffer.</li>
           </ul>
         </div>
 

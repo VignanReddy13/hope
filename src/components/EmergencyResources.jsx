@@ -4,36 +4,36 @@ import { MapPin, Phone, ExternalLink, Hospital } from 'lucide-react';
 const EmergencyResources = () => {
   const nearbyHospitals = [
     {
-      name: "Amara Hospital (OP Clinic)",
-      address: "YBN Palli Rd, opposite Kakatiya College, Rajampet",
-      distance: "0.8 km",
-      type: "Private Clinic",
-      landmark: "YBN Palli",
-      contact: "08565 240 240"
+      name: "SVIMS (Sri Venkateswara Institute of Medical Sciences)",
+      address: "Alipiri Road, SV University Campus, Tirupati",
+      distance: "1.2 km",
+      type: "Super Speciality",
+      landmark: "Near SVU Campus",
+      contact: "0877 228 7777"
     },
     {
-      name: "Government General Hospital",
-      address: "R.S. Road, Rajampet",
-      distance: "2.4 km",
-      type: "Government Hospital",
-      landmark: "Main Town",
+      name: "BIRRD Hospital",
+      address: "SVIMS Campus, Tirupati",
+      distance: "1.5 km",
+      type: "Orthopaedic Speciality",
+      landmark: "SVIMS Campus",
+      contact: "0877 226 4220"
+    },
+    {
+      name: "Ruia Hospital (SVRRGGH)",
+      address: "Alipiri Road, Tirupati",
+      distance: "2.0 km",
+      type: "Govt. General Hospital",
+      landmark: "Opposite SVIMS",
       contact: "108 (EMS)"
     },
     {
-      name: "Ravindra Children's Hospital",
-      address: "R.S Road, Rajampet",
-      distance: "2.6 km",
-      type: "Private Hospital",
-      landmark: "Beside Dr. Jaganmohan Hospital",
-      contact: "08565 241 123"
-    },
-    {
-      name: "Sri Bindu Maternity & Ortho Hospital",
-      address: "Kadapa Tirupati Road, Rajampet",
-      distance: "3.2 km",
+      name: "Sri Padmavathi Medical College for Women Hospital",
+      address: "Tirupati",
+      distance: "4.5 km",
       type: "Speciality Hospital",
-      landmark: "Near NTR Circle",
-      contact: "08565 242 456"
+      landmark: "Tirupati",
+      contact: "0877 228 5555"
     }
   ];
 
@@ -45,7 +45,7 @@ const EmergencyResources = () => {
       </div>
       <p className="resource-address">
         <MapPin size={14} style={{ marginRight: '6px' }} />
-        New Boyanapalli, Rajampet, AP - 516126
+        SV University Campus, Tirupati, AP - 517 501
       </p>
       
       <div className="hospital-list">
